@@ -41,7 +41,7 @@
         tools:layout="@layout/score_fragment">
         <action
             android:id="@+id/action_restart"
-            app:destination="@id/game_destination"
+            app:destination="@id/title_destination"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_right"
@@ -53,4 +53,3 @@
             android:defaultValue="0" />
     </fragment>
 </navigation>
-<!--TODO sprawdzić czy score_destination ma poprawny destination dla action_restart - czy zaczyna się gra od razu czy jest pierwszy ekran-->

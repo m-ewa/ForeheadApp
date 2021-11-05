@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <item android:title="@string/category">
+        <menu>
+            <item
+                android:id="@+id/nav_radios_category"
+                app:actionLayout="@layout/radio_button_category"
+                tools:ignore="MenuTitle" />
+        </menu>
+    </item>
+    <item android:title="@string/timer">
+        <menu>
+            <item
+                android:id="@+id/nav_radios_timer"
+                app:actionLayout="@layout/radio_button_time"
+                tools:ignore="MenuTitle" />
+        </menu>
+    </item>
+</menu>

@@ -11,4 +11,18 @@
     <string name="word_is">The song is…</string>
     <string name="score_format">Current Score: %d</string>
 
+<!--    Drawer -->
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+
+    <string name="category">Choose category to guess:</string>
+    <string name="item_words">Words</string>
+    <string name="item_songs">Songs</string>
+    <string name="item_characters">Characters</string>
+
+    <string name="timer">How much time do you need?</string>
+    <string name="time_short">1 min</string>
+    <string name="time_moderate">2,5 min</string>
+    <string name="time_long">5 min</string>
+
 </resources>

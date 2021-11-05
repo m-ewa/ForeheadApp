@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/title_destination"
         android:name="com.ewam.foreheadapp.screens.title.TitleFragment"
-        android:label="title_fragment"
+        android:label="Forehead App"
         tools:layout="@layout/title_fragment">
         <action
             android:id="@+id/action_title_to_game"

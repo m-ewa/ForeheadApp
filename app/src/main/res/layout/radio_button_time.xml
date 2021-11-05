@@ -1,0 +1,25 @@
+<RadioGroup android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RadioButton
+        android:id="@+id/radio_time_short"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/time_short" />
+
+    <RadioButton
+        android:id="@+id/radio_time_moderate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/time_moderate" />
+
+    <RadioButton
+        android:id="@+id/radio_time_long"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/time_long" />
+</RadioGroup>

@@ -6,6 +6,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
+import com.ewam.foreheadapp.screens.lists.songList
+import com.ewam.foreheadapp.screens.lists.wordList
 
 private val CORRECT_BUZZ_PATTERN = longArrayOf(100, 100, 100, 100, 100, 100)
 private val PANIC_BUZZ_PATTERN = longArrayOf(0, 200)
@@ -18,6 +20,7 @@ class GameViewModel : ViewModel() {
         private const val DONE = 0L
         private const val ONE_SECOND = 1000L
         private const val COUNTDOWN_TIME = 60000L
+
         // This is the time when the phone will start buzzing each second
         private const val COUNTDOWN_PANIC_SECONDS = 10L
     }
@@ -39,18 +42,18 @@ class GameViewModel : ViewModel() {
         DateUtils.formatElapsedTime(time)
     }
 
-    // The current song
-    private val _song = MutableLiveData<String>()
-    val song: LiveData<String>
-        get() = _song
-    
+    // The current thing to guess
+    private val _guess = MutableLiveData<String>()
+    val guess: LiveData<String>
+        get() = _guess
+
     // The current score
     private val _score = MutableLiveData<Int>()
     val score: LiveData<Int>
         get() = _score
 
     // The list of songs
-    private lateinit var songList: MutableList<String>
+    private lateinit var list: MutableList<String>
 
     // Event which triggers the end of the game
     private val _eventGameFinish = MutableLiveData<Boolean>()
@@ -63,7 +66,7 @@ class GameViewModel : ViewModel() {
 
     init {
         resetList()
-        nextSong()
+        nextGuess()
         _score.value = 0
 
         // Creates a timer which triggers the end of the game when it finishes
@@ -85,47 +88,32 @@ class GameViewModel : ViewModel() {
         timer.start()
     }
 
-    // Resets the list of songs and randomizes the order
+    // Resets the list of things to guess and randomizes the order
     private fun resetList() {
-        songList = mutableListOf(
-            "Californication by Red Hot Chili Peppers",
-            "The Queen Is Dead by The Smiths",
-            "Wish You Were Here by Pink Floyd",
-            "London Calling by The Clash",
-            "Back In Black by AC/DC",
-            "Smells Like Teen Spirit by Nirvana",
-            "Imagine by John Lennon",
-            "One by U2",
-            "Billie Jean by Michael Jackson",
-            "Bohemian Rhapsody by Queen",
-            "Hey Jude by The Beatles",
-            "Like A Rolling Stone by Bob Dylan",
-            "I Can't Get No Satisfaction by Rolling Stones",
-            "Wannabe by Spice Girls",
-            "Bad Romance by Lady Gaga"
-        )
-        songList.shuffle()
+        list = wordList
+        // todo add if statement
+        list.shuffle()
     }
 
     // Moves to the next song in the list
-    private fun nextSong() {
+    private fun nextGuess() {
         //Select and remove a song from the list
-        if (songList.isEmpty()) {
+        if (list.isEmpty()) {
             resetList()
         }
-        _song.value = songList.removeAt(0)
+        _guess.value = list.removeAt(0)
     }
 
     // Methods for button presses
     fun onSkip() {
         _score.value = (_score.value)?.minus(1)
-        nextSong()
+        nextGuess()
     }
 
     fun onCorrect() {
         _score.value = (_score.value)?.plus(1)
         _eventBuzz.value = BuzzType.CORRECT
-        nextSong()
+        nextGuess()
     }
 
     // Methods for completed events
